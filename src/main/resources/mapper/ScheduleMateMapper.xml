@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlyedu.newclassesschedule.dao.ScheduleMateDao" >
+
+    <sql id="base_sql">
+       id,uri,serverAddr,job_name jobName,job_group jobGroup,cronExp,paramJSON,create_time createTime,update_time updateTime
+    </sql>
+
+
+
+    <select id="findAll" resultType="com.onlyedu.newclassesschedule.model.ScheduleMate">
+        select <include refid="base_sql"/>
+        from schedule_meta
+        where enabled = 1
+
+    </select>
+
+    <select id="findByPrimaryKey" resultType="com.onlyedu.newclassesschedule.model.ScheduleMate">
+        select <include refid="base_sql"/>
+        from schedule_meta
+        where enabled = 1
+        and id = #{id}
+
+    </select>
+
+</mapper>
